@@ -29,3 +29,6 @@ tot_sum = 0
 for i in range(len(result)):
     tot_sum += int(result[i][4])
 print("총 금액", tot_sum)
+
+
+

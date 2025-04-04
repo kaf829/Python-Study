@@ -14,7 +14,6 @@ def proc_gugudan(min_num, max_num):
 
     print()
 
-
     for i in range(1, 10):
         for num in range(min_num, max_num + 1):
             print(f" {num:2d} * {i:2d} = {num * i:2d}", end="")

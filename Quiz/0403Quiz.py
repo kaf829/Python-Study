@@ -10,12 +10,12 @@ def number_confirm():
     if a > 0 and b > 0:
         return print("두 수의 곱은 양수이다")
     elif a < 0 and b < 0:
-        return print("두 수의 곱은 p수이다")
+        return print("두 수의 곱은 양수이다")
     else:
         return print("두 수의 곱은 음수이다")
 
 
-# number_confirm()
+number_confirm()
 
 
 # [문제2] 학생수준평가 시험에서 영어점수와 수학점수가 합해서 110점이 넘으면 합격이지만 각 점수가 40점 미만이면 불합격이 다.
@@ -52,4 +52,4 @@ def height_calc():
     print(count)
 
 
-height_calc()
+# height_calc()

@@ -1,0 +1,21 @@
+count =0
+
+def fibonacci(n):
+    print (f"fibonacci {n} 을 구합니다")
+    global count
+    count +=1
+    if n == 1:
+        return  1
+    if n == 2:
+        return  2
+    else:
+        return fibonacci(n-1) + fibonacci(n -2)
+
+fibonacci(100)
+print("fibonacci(10) 덧셈 횟수는", count)
+# print("fibonacci(2)", fibonacci(2))
+# print("fibonacci(3)", fibonacci(3))
+# print("fibonacci(4)", fibonacci(4))
+# print("fibonacci(5)", fibonacci(5))
+
+

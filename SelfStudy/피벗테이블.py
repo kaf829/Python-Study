@@ -10,3 +10,4 @@ data = {
 df = pd.DataFrame(data)
 pivot_table = df.pivot_table(values='Sales', index='Name', columns='Month', aggfunc='sum')
 print(pivot_table)
+

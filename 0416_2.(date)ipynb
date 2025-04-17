@@ -159,7 +159,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": 39,
    "id": "12e63698-1c40-4354-b1e8-7ce233f1e77a",
    "metadata": {},
    "outputs": [
@@ -182,7 +182,7 @@
        "              dtype='datetime64[ns]', freq='W-SUN')"
       ]
      },
-     "execution_count": 21,
+     "execution_count": 39,
      "metadata": {},
      "output_type": "execute_result"
     }

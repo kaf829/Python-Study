@@ -5,10 +5,10 @@ from statistics import mean
 
 # 설정
 NUM_PEOPLE = 31
-NUM_ROUNDS = 8
-GROUPS_OF_4 = 7
-GROUPS_OF_3 = 1
-ATTEMPTS_PER_ROUND = 10_000_000_000  # 💥 회차당 1천만번 시도
+NUM_ROUNDS = 10
+GROUPS_OF_3 = 9
+GROUPS_OF_4 = 1
+ATTEMPTS_PER_ROUND = 1_000_000
 
 people = list(range(1, NUM_PEOPLE + 1))
 pair_history = defaultdict(int)
@@ -17,7 +17,7 @@ def score_group(group):
     return sum(pair_history[tuple(sorted(pair))] for pair in combinations(group, 2))
 
 def update_pair_history(group):
-    for pair in combinations(group, 2):
+    for pair in combinations(group, 2): 
         pair_history[tuple(sorted(pair))] += 1
 
 def generate_best_groups():
@@ -28,16 +28,16 @@ def generate_best_groups():
         random.shuffle(people)
         groups = []
         idx = 0
-        for _ in range(GROUPS_OF_4):
-            groups.append(people[idx:idx+4])
-            idx += 4
-        groups.append(people[idx:idx+3])  # 마지막 3명 조
+        for _ in range(GROUPS_OF_3):
+            groups.append(people[idx:idx+3])
+            idx += 3
+        groups.append(people[idx:idx+4])  # 마지막 4명 조
 
         score = sum(score_group(group) for group in groups)
         if score < lowest_score:
             best_config = groups
             lowest_score = score
-            if lowest_score == 0:  # 💡 완벽한 조합이 나오면 조기 종료 가능
+            if lowest_score == 0:  # 완벽한 조합 발견 시 종료
                 break
 
     return best_config
@@ -46,14 +46,14 @@ def generate_best_groups():
 all_rounds = []
 
 for round_num in range(1, NUM_ROUNDS + 1):
-    print(f"🚀 Generating round {round_num}... (this may take a while)")
+    print(f"🚀 Generating round {round_num}...")
     best_groups = generate_best_groups()
     all_rounds.append(best_groups)
     for group in best_groups:
         update_pair_history(group)
 
 # 결과 출력
-print("\n📋 조 편성 결과 (총 8회차)")
+print("\n📋 조 편성 결과 (총 10회차)")
 for i, round_groups in enumerate(all_rounds, 1):
     print(f"\n🔁 Round {i}")
     for j, group in enumerate(round_groups, 1):
@@ -76,3 +76,4 @@ print("\n⚠️ 2번 이상 겹친 쌍:")
 for (a, b), count in pair_history.items():
     if count >= 2:
         print(f"  - ({a}, {b}): {count}번")
+

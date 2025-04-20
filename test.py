@@ -1,34 +1,68 @@
 import pandas as pd
-# 경로 지정
-base_path = "C:/Users/MINJUN/Desktop/welmart"
+import seaborn as sns
+import matplotlib.pyplot as plt
+# 출력 설정 변경 (전체 컬럼, 전체 행 보기)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
 
-# 파일 불러오기
-train_df = pd.read_csv(f"{base_path}/train.csv")
-test_df = pd.read_csv(f"{base_path}/test.csv")
-features_df = pd.read_csv(f"{base_path}/features.csv")
-stores_df = pd.read_csv(f"{base_path}/stores.csv")
+# CSV 불러오기
+file_path = "C:/Users/MINJUN/Desktop/data/car_prices.csv"
+car = pd.read_csv(file_path)
 
-# 첫 5개 행 미리 보기
-print("▶ train.csv")
-print(train_df.head())
+# 보기 좋게 출력
+print("▶ car.csv 데이터")
+#
+# print(car)
 
-print("\n▶ test.csv")
-print(test_df.head())
-
-print("\n▶ features.csv")
-print(features_df.head())
-
-print("\n▶ stores.csv")
-print(stores_df.head())
+# # state 컬럼이 'Sedan' 또는 'sedan'인 데이터만 필터링
+# filtered_data = car[car['state'].str.lower().isin(['sedan'])]
+#
+# # 필터링된 데이터 출력
+# print("▶ state 컬럼이 'Sedan' 또는 'sedan'인 데이터")
+# print(filtered_data)
 
 
-# 각 파일의 행/열 수 확인
-print("Train Shape:", train_df.shape)
-print("Test Shape:", test_df.shape)
-print("Features Shape:", features_df.shape)
-print("Stores Shape:", stores_df.shape)
 
-# 결측치 있는 컬럼 확인
-print("\nMissing values (train):\n", train_df.isnull().sum())
-print("\nMissing values (features):\n", features_df.isnull().sum())
+#car = car[car['vin'] != '5npe24af4fh001562']
+#car = car[car['vin'] != "1g1pe5sbxe7120097"]
+#car = car[car['vin'] != '2g1fb3d31e9134662']
+#car = car[car['vin'] != '5npe24af4fh038482']
+#car = car[car['vin'] != '5uxkr2c52e0h33130']
+# car = car[car['vin'] != '5uxkr2c52e0h33130']
 
+
+# car.loc[car['vin'] == '5npe24af4fh001562', 'saleDate'] = car.loc[car['vin'] == '5npe24af4fh001562', 'sellingprice']
+
+
+print(car.loc[car['vin'] =='5npe24af4fh001562'])
+
+
+
+# for col in car.columns:
+#     print(f"\n🟡 {col} ({car[col].dtype})")
+#     print(len(car[col].unique()))
+#     print(car[col].unique())
+
+
+
+
+import pandas as pd
+
+
+
+
+
+
+# 수치형 컬럼만 추출
+# numeric_df = car.select_dtypes(include=['number'])
+#
+# # 상관계수 계산
+# correlation_matrix = numeric_df.corr()
+#
+# # 히트맵 시각화
+# plt.figure(figsize=(10, 8))
+# sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", square=True)
+# plt.rcParams['font.family'] = 'Malgun Gothic'
+# plt.show()
